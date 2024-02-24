@@ -23,10 +23,10 @@ public class User {
 
     public boolean isEcologic(int maxConsumption) {
         boolean isEcologic = true;
-       if (waterConsumption > maxConsumption || (gasDayConsumption + gasNightConsumption) > maxConsumption ||
-               (electricityDayConsumption + electricityNightConsumption) > maxConsumption) {
-           isEcologic = false;
-       }
+        if (waterConsumption > maxConsumption || (gasDayConsumption + gasNightConsumption) > maxConsumption ||
+                (electricityDayConsumption + electricityNightConsumption) > maxConsumption) {
+            isEcologic = false;
+        }
         return isEcologic;
     }
 

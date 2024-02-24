@@ -1,12 +1,11 @@
 package Users;
 
-import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Scanner;
 
 public class EcologicUsers {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String path = getPath(scanner);
         int maxConsumption = getMaxConsumption(scanner);
