@@ -1,46 +1,37 @@
 package Users;
 
 public class User {
-    public User(int number, String name, int waterConsumption, int gasDayConsumption, int gasNightConsumption,
-                int electricityDayConsumption, int electricityNightConsumption) {
+    public User(int number, String name, int waterConsumption, int gasDay, int gasNight, int electricityDay,
+                int electricityNight) {
         this.number = number;
         this.name = name;
-        Water water = new Water(waterConsumption);
-        resources[0] = water;
-        Gas gas = new Gas(gasDayConsumption, gasNightConsumption);
-        resources[1] = gas;
-        Electricity electricity = new Electricity(electricityDayConsumption, electricityNightConsumption);
-        resources[2] = electricity;
+        this.waterConsumption = waterConsumption;
+        this.gasDayConsumption = gasDay;
+        this.gasNightConsumption = gasNight;
+        this.electricityDayConsumption = electricityDay;
+        this.electricityNightConsumption = electricityNight;
     }
 
     private final int number;
     private final String name;
-    private final Resource[] resources = new Resource[3];
+    private final int waterConsumption;
+    private final int gasDayConsumption;
+    private final int gasNightConsumption;
+    private final int electricityDayConsumption;
+    private final int electricityNightConsumption;
+
 
     public boolean isEcologic(int maxConsumption) {
         boolean isEcologic = true;
-        for (Resource resource : resources) {
-            if (resource.getConsumption() > maxConsumption) {
-                isEcologic = false;
-            }
-        }
+       if (waterConsumption > maxConsumption || (gasDayConsumption + gasNightConsumption) > maxConsumption ||
+               (electricityDayConsumption + electricityNightConsumption) > maxConsumption) {
+           isEcologic = false;
+       }
         return isEcologic;
     }
 
     public String toString() {
-        StringBuilder consumption = new StringBuilder();
-        for (Resource j : this.resources) {
-            consumption.append(j.getConsumption());
-            consumption.append("|");
-        }
-        return this.number + "|" + this.name + "|" + consumption;
-    }
-
-    public int getNumber() {
-        return number;
-    }
-
-    public String getName() {
-        return name;
+        return number + "|" + name + "|" + waterConsumption + "|" + gasDayConsumption + "|" + gasNightConsumption + "|"
+                + electricityDayConsumption + "|" + electricityNightConsumption;
     }
 }
